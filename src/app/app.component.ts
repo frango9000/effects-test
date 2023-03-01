@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Actions} from "@ngneat/effects-ng";
+import {loadApp} from "./app.effects";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'effects-test';
+  constructor(private actions: Actions) {}
+
+  dispatch() {
+    this.actions.dispatch(loadApp({user:'id'}));
+  }
 }
